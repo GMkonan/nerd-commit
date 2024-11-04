@@ -7,7 +7,7 @@ NC='\033[0m'
 
 echo "${BLUE}[INFO]${NC} Start running dumb thing"
 
-DEFAULT_REPO_PATH="$HOME/code/projects/test-cm-empty/"
+DEFAULT_REPO_PATH="../empty-repo-nerd-commit/"
 REPO_PATH="${1:-$DEFAULT_REPO_PATH}"
 YEAR="2024"
 
@@ -17,8 +17,8 @@ loop_commit() {
 	# variable should be a date starting with month and divided by . (e.g. "09.25")
         COMMAND="git commit --allow-empty -m \"This is a NERD COMMIT\" --date=\"\$YEAR.$1 16:20\""
 	# echo "$COMMAND"
-	# Loop each commit like 20 times to ensure greeness
-	for i in {1..20}
+	# Loop each commit like 30 times to ensure greeness
+	for i in {1..30}
 	do
 	   eval "$COMMAND"
 	done

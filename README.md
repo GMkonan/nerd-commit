@@ -1,5 +1,7 @@
 # Nerd Commit
-Have a stupid word on your github graph
+Have a stupid word on your github graph, right now the only default supported word is "nerd"
+
+![graph-image](./graph-image.png)
 
 > [!CAUTION]
 > This is a dumb project and you are stupid for using it! but feel free to do so
@@ -12,7 +14,9 @@ Now you can point the repo name as an argument to the shell file.
 ```bash
 chmod +x ./setup.sh 
 
-./setup.sh ../relative/path/to/dummy/repo
+./setup.sh ../relative/path/to/dummy/repo # defaults to ../empty-repo-nerd-commit/
 ```
 
-
+#### Ideas
+- Setup readme on empty commit repo to specify that it's indeed, a nerd commit empty repo
+- make UI to select github dates and pass as array so user can draw anything he wants?
