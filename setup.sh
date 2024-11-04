@@ -130,5 +130,5 @@ done
 # Finish it and push
 git push origin main
 
-echo "${GREEN}Script finished! Check your github graph :)"
+echo "${GREEN}[SUCCESS]${NC} Script finished! Check your github graph :)"
 
