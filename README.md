@@ -1,7 +1,9 @@
 # Nerd Commit
 Have a stupid word on your github graph, right now the only default supported word is "nerd"
 
-![graph-image](./graph-image.png)
+![graph-image-hire-me](./graph-image-2.png)
+
+![graph-image-nerd](./graph-image.png)
 
 > [!CAUTION]
 > This is a dumb project and you are stupid for using it! but feel free to do so
@@ -20,3 +22,4 @@ chmod +x ./setup.sh
 #### Ideas
 - Setup readme on empty commit repo to specify that it's indeed, a nerd commit empty repo
 - make UI to select github dates and pass as array so user can draw anything he wants?
+- get highest commit day and make it 1.6 higher to ensure greeness of blocks..
