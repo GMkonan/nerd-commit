@@ -17,7 +17,8 @@ loop_commit() {
 	# variable should be a date starting with month and divided by . (e.g. "09.25")
         COMMAND="git commit --allow-empty -m \"This is a NERD COMMIT\" --date=\"\$YEAR.$1 16:20\""
 	# echo "$COMMAND"
-	# Loop each commit like 30 times to ensure greeness
+	# Loop each commit like 48 times to ensure greeness
+	# This number should be dynamic, because it depends on the amount of commits per day of each person
 	for i in {1..48}
 	do
 	   eval "$COMMAND"
@@ -99,9 +100,11 @@ dates=(
     '09.05' '08.23' '08.30'
 )
 
-for date in "${hireme_dates[@]}"; do
+for date in "${dates[@]}"; do
     loop_commit "$date"
 done
+
+# echo "# empty-repo-nerd-commit" >> README.md
 
 # Finish it and push
 git push origin main
