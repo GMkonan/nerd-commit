@@ -1,5 +1,5 @@
 # Nerd Commit
-Have a stupid word on your github graph, right now the only default supported word is "nerd"
+Have a stupid word on your github graph, You can run the web and server to create your own word! Better instructions will be written at some point...
 
 ![graph-image-hire-me](./graph-image-2.png)
 
@@ -19,7 +19,14 @@ chmod +x ./setup.sh
 ./setup.sh ../relative/path/to/dummy/repo # defaults to ../empty-repo-nerd-commit/
 ```
 
+### Todo
+- styling web
+- year dropdown
+- pass year info to script via server
+- install script (initiate web and server and guide user)
+- new readme
+
+
 #### Ideas
 - Setup readme on empty commit repo to specify that it's indeed, a nerd commit empty repo
-- make UI to select github dates and pass as array so user can draw anything he wants?
-- get highest commit day and make it 1.6 higher to ensure greeness of blocks..
+- drawing by moving mouse and not only clicking

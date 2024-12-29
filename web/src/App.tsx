@@ -3,6 +3,7 @@ import "./App.css";
 import ActivityCalendar from "react-activity-calendar";
 import { fetchGitHubContributions } from "./utils/fetch-github-contributions";
 import { format } from "date-fns";
+import axios from "axios";
 
 type GraphType = {
   date: string;
@@ -55,6 +56,10 @@ function App() {
 
     console.log("Commit count for each:", { highestCount });
     console.log("Dates:", { formattedDates });
+    axios.post("http://localhost:3000", {
+      dates: formattedDates,
+      count: highestCount,
+    });
   };
   // add dropdown year selection
   // could have an option for active like github
