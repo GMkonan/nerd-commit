@@ -13,7 +13,7 @@ NC='\033[0m'
 echo "${BLUE}[INFO]${NC} Start running dumb thing"
 
 DEFAULT_REPO_PATH="../empty-repo-nerd-commit/"
-REPO_PATH="${1:-$DEFAULT_REPO_PATH}"
+REPO_PATH="${4:-$DEFAULT_REPO_PATH}"
 YEAR="$year"
 
 cd $REPO_PATH
