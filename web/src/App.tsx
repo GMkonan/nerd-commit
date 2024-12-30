@@ -4,6 +4,8 @@ import ActivityCalendar from "react-activity-calendar";
 import { fetchGitHubContributions } from "./utils/fetch-github-contributions";
 import { format } from "date-fns";
 import axios from "axios";
+import getGitHubAccountYear from "./utils/get-github-account-year";
+import YearDropdown from "./components/year-dropdown";
 
 type GraphType = {
   date: string;
@@ -13,6 +15,8 @@ type GraphType = {
 
 function App() {
   const [value, setValue] = useState("");
+  const [year, setYear] = useState<number | null>(null);
+  const [startYear, setStartYear] = useState<number | null>(null);
   const [data, setData] = useState<GraphType[]>([
     // initial data so the calendar actually renders
     {
@@ -28,6 +32,7 @@ function App() {
   ]);
 
   const handleClick = (username: string) => {
+    getGitHubAccountYear(username).then((d) => setStartYear(d));
     fetchGitHubContributions(username).then((data) => {
       console.log(data);
       const graphData: GraphType[] = [];
@@ -59,14 +64,18 @@ function App() {
     axios.post("http://localhost:3000", {
       dates: formattedDates,
       count: highestCount,
+      year: year,
     });
   };
-  // add dropdown year selection
-  // could have an option for active like github
+
   return (
     <div>
       <div>
         <h3>Insert github username</h3>
+        {startYear && (
+          <YearDropdown startYear={startYear} onChange={(y) => setYear(y)} />
+        )}
+
         <input
           type="text"
           value={value}
@@ -79,7 +88,7 @@ function App() {
         colorScheme="light"
         data={data}
         eventHandlers={{
-          onClick: (event) => (activity) => {
+          onClick: () => (activity) => {
             const activityData = data.find((d) => d.date === activity.date);
             if (activityData) {
               if (activityData.level === 4) {

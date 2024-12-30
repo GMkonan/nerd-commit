@@ -3,6 +3,7 @@ import { $ } from "bun";
 interface DataT {
 	dates: string[];
 	count: number;
+	year: number;
 }
 
 const CORS_HEADERS = {
@@ -24,7 +25,7 @@ const server = Bun.serve({
 		const data = (await req.json()) as DataT;
 		console.log("Received JSON:", data);
 
-		await $`sh ../cmd.sh ${data.dates.join(",")} ${data.count}`;
+		await $`sh ../cmd.sh ${data.dates.join(",")} ${data.count} ${data.year}`;
 		return Response.json({ success: true, data }, CORS_HEADERS);
 	},
 });

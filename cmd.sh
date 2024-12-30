@@ -1,5 +1,6 @@
 dates=$1
 count=$2
+year=$3
 
 # transform into dates array
 IFS=',' read -ra DATES_ARRAY <<< "$dates"
@@ -13,7 +14,7 @@ echo "${BLUE}[INFO]${NC} Start running dumb thing"
 
 DEFAULT_REPO_PATH="../empty-repo-nerd-commit/"
 REPO_PATH="${1:-$DEFAULT_REPO_PATH}"
-YEAR="2025"
+YEAR="$year"
 
 cd $REPO_PATH
 
