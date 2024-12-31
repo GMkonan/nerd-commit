@@ -32,7 +32,11 @@ export async function fetchGitHubContributions(
   toDate?: string
 ): Promise<ContributionCalendar> {
   const token = import.meta.env.VITE_GITHUB_TOKEN as string;
-  console.log({token});
+
+  const formatDateForGitHub = (dateString: string): string => {
+    // ISO 8601 
+    return `${dateString}T00:00:00Z`;
+  };
 
   const query = `
     query($username: String!, $from: DateTime, $to: DateTime) {
@@ -56,8 +60,8 @@ export async function fetchGitHubContributions(
 
   const variables = {
     username,
-    from: fromDate,
-    to: toDate,
+    from: formatDateForGitHub(fromDate!),
+    to: formatDateForGitHub(toDate!),
   };
 
   try {

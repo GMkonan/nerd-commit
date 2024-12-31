@@ -12,19 +12,18 @@ NC='\033[0m'
 
 echo "${BLUE}[INFO]${NC} Start running dumb thing"
 
-DEFAULT_REPO_PATH="../empty-repo-nerd-commit/"
+DEFAULT_REPO_PATH="../../empty-repo-nerd-commit/"
 REPO_PATH="${4:-$DEFAULT_REPO_PATH}"
 YEAR="$year"
 
 cd $REPO_PATH
 
 loop_commit() {
-	# variable should be a date starting with month and divided by . (e.g. "09.25")
-        COMMAND="git commit --allow-empty -m \"This is a NERD COMMIT\" --date=\"\$YEAR.$1 16:20\""
-	for i in {1..$count}
-	do
-	   eval "$COMMAND"
-	done
+    # variable should be a date starting with month and divided by . (e.g. "09.25")
+    for i in $(seq 1 $count)
+    do
+        git commit --allow-empty -m "This is a NERD COMMIT" --date="$YEAR.$1 16:20"
+    done
 }
 
 for date in "${DATES_ARRAY[@]}"; do

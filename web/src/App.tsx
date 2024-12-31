@@ -14,6 +14,7 @@ type GraphType = {
 };
 
 function App() {
+  const [githubName, setGitHubName] = useState("");
   const [value, setValue] = useState("");
   const [year, setYear] = useState<number | null>(null);
   const [startYear, setStartYear] = useState<number | null>(null);
@@ -31,8 +32,29 @@ function App() {
     },
   ]);
 
+  const fetchYearContributions = (username: string, year: number) => {
+    fetchGitHubContributions(username, `${year}-01-01`, `${year}-12-31`).then(
+      (data) => {
+        console.log(data);
+        const graphData: GraphType[] = [];
+        data.weeks.forEach((week) => {
+          week.contributionDays.forEach((day) => {
+            graphData.push({
+              date: day.date,
+              count: day.contributionCount,
+              level: 0,
+            });
+          });
+        });
+        setData(graphData);
+      }
+    );
+  };
+
   const handleClick = (username: string) => {
+    setGitHubName(username);
     getGitHubAccountYear(username).then((d) => setStartYear(d));
+
     fetchGitHubContributions(username).then((data) => {
       console.log(data);
       const graphData: GraphType[] = [];
@@ -47,6 +69,12 @@ function App() {
       });
       setData(graphData);
     });
+  };
+
+  const onChangeYear = (y: number) => {
+    console.log(githubName, y);
+    fetchYearContributions(githubName, y);
+    setYear(y);
   };
 
   const handleExport = (data: GraphType[]) => {
@@ -73,7 +101,10 @@ function App() {
       <div>
         <h3>Insert github username</h3>
         {startYear && (
-          <YearDropdown startYear={startYear} onChange={(y) => setYear(y)} />
+          <YearDropdown
+            startYear={startYear}
+            onChange={(y) => onChangeYear(y)}
+          />
         )}
 
         <input
