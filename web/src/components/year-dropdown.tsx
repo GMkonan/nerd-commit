@@ -25,7 +25,6 @@ const YearDropdown = ({
                  focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 
                  ${className}`}
     >
-      <option value="">Select Year</option>
       {years.map((year) => (
         <option key={year} value={year}>
           {year}

@@ -16,8 +16,8 @@ For now you need to run web and server by yourself and create your repo to store
 ### Todo
 
 - styling web
-- drawing by moving mouse and not only clicking
 - [x] year dropdown
 - [x] pass year info to script via server
 - install script (initiate web and server and guide user)
 - new readme
+- drawing by moving mouse and not only clicking
