@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import ActivityCalendar from "react-activity-calendar";
 import { fetchGitHubContributions } from "./utils/fetch-github-contributions";
 import { format } from "date-fns";
@@ -102,23 +101,31 @@ function App() {
   };
 
   return (
-    <div>
-      <div>
-        <h3>Insert github username</h3>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="mb-4">
+        <h3 className="text-2xl font-bold pb-2 text-center">Nerd Commit</h3>
+
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="github username..."
+          className="p-1 rounded-sm border border-gray-400"
+        />
+        <button
+          className="ml-2 p-1 rounded-sm bg-[#8caaee] text-[#303446] font-semibold"
+          onClick={() => handleClick(value)}
+        >
+          Submit
+        </button>
+      </div>
+      <div className="mb-4">
         {startYear && (
           <YearDropdown
             startYear={startYear}
             onChange={(y) => onChangeYear(y)}
           />
         )}
-
-        <input
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder="username"
-        />
-        <button onClick={() => handleClick(value)}>Submit</button>
       </div>
       <ActivityCalendar
         colorScheme="light"
@@ -140,7 +147,12 @@ function App() {
         }}
       />
       <div>
-        <button onClick={() => handleExport(data)}>Export</button>
+        <button
+          className="bg-[#8caaee] text-[#303446] font-semibold p-1 rounded-sm"
+          onClick={() => handleExport(data)}
+        >
+          Run Script
+        </button>
       </div>
     </div>
   );

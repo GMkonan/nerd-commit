@@ -60,8 +60,8 @@ export async function fetchGitHubContributions(
 
   const variables = {
     username,
-    from: formatDateForGitHub(fromDate!),
-    to: formatDateForGitHub(toDate!),
+    from: fromDate ? formatDateForGitHub(fromDate) : undefined,
+    to: toDate ? formatDateForGitHub(toDate) : undefined,
   };
 
   try {
