@@ -79,12 +79,17 @@ function App() {
 
   const handleExport = (data: GraphType[]) => {
     // get the current highest commit day and double it to ensure ultimate color
-    let highestCount = Math.max(...data.map((d) => d.count)) * 2;
+    let highestCount = Math.max(...data.map((d) => d.count)) * 2.5;
     if (highestCount === 0) {
       highestCount = 10;
     }
     const selectedDates = data.filter((d) => d.level === 4);
-    const formattedDates = selectedDates.map((d) => format(d.date, "MM.dd"));
+    const formattedDates = selectedDates.map((d) =>
+      // format subtracts one day when passed in yyyy-mm-dd format
+      // so we replace the dashes with slashes to get the correct date
+      // https://stackoverflow.com/questions/68807970/parse-function-in-date-fns-returns-one-day-previous-value
+      format(new Date(d.date.replace(/-/g, "/")), "MM.dd")
+    );
     console.log("Selected Dates", { selectedDates });
 
     console.log("Commit count for each:", { highestCount });
@@ -120,6 +125,7 @@ function App() {
         data={data}
         eventHandlers={{
           onClick: () => (activity) => {
+            console.log(activity.date);
             const activityData = data.find((d) => d.date === activity.date);
             if (activityData) {
               if (activityData.level === 4) {
