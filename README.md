@@ -41,14 +41,12 @@ Now you can go to `localhost:5173` and use the UI to customize your graph!
 
 ### Todo
 
-- styling web
-- [x] year dropdown
-- [x] pass year info to script via server
-- install script (initiate web and server and guide user)
-- new readme
-- drawing by moving mouse and not only clicking
-- make blocks more consistent in color
+- styling web ui
 
 ### Ideas
 
 - have a way to write something and this be transformed into pixel art writing in the middle of the graph
+- drawing by moving mouse and not only clicking
+- make blocks more consistent in color
+  - probably when we do an X amount of commits in a certain date that already has a couple commits it makes it differ between
+  - blocks that are part of the drawing/writing the user specificed.
