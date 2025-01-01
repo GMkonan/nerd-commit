@@ -14,7 +14,12 @@ echo "${BLUE}[INFO]${NC} Start running dumb thing"
 
 YEAR="$year"
 DEFAULT_REPO_PATH="../../empty-repo-nerd-commit-$YEAR/"
+
 REPO_PATH="${4:-$DEFAULT_REPO_PATH}"
+if [ ! -d "$REPO_PATH" ]; then
+  echo "Commit Repo not found. Please ensure the directory exists."
+  exit 1
+fi
 
 cd $REPO_PATH
 

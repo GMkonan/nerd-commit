@@ -42,6 +42,7 @@ Now you can go to `localhost:5173` and use the UI to customize your graph!
 ### Todo
 
 - styling web ui
+- fix initial load year
 
 ### Ideas
 
