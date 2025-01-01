@@ -1,6 +1,6 @@
 # Nerd Commit
 
-Have a stupid word on your github graph, draw whatever you want by running `web/` and `server/` and going to `localhost:5173`
+Have a stupid word on your github graph
 
 ![graph-image-hire-me](./graph-image-2.png)
 
@@ -9,16 +9,35 @@ Have a stupid word on your github graph, draw whatever you want by running `web/
 > [!CAUTION]
 > This is a dumb project and you are stupid for using it! but feel free to do so
 
-### How do I do it?
+### Setup
 
-For now you need to run `web/` and `server/` by yourself and create your repo to store the commits, better instructions at some point...
+##### Setting up the commit repo
 
-clone the project, `bun install` and `bun dev` both.
+Create the directory where you will store the commits, name it `empty-repo-nerd-commit-$YEAR` where YEAR is the year graph you wanna commit to
+init the repo and create your remote.
 
-the default repo it searches for is `empty-repo-nerd-commit-$YEAR` where YEAR is the year graph you wanna commit to.
-Create the directory and git init && create the remote repo connected (reccommend using gh CLI or my own ghe CLI to create it)
+```bash
+mkdir empty-repo-nerd-commit-2024
 
-Now you can go to `localhost:5173` and write what you want!
+cd empty-repo-nerd-commit-2024
+
+git init
+
+gh repo create # using github CLI
+
+```
+
+After it you can clone this project and run the `setup.sh` file.
+
+```bash
+git clone https://github.com/GMkonan/nerd-commit.git
+
+sh ./setup.sh
+```
+
+Now you can go to `localhost:5173` and use the UI to customize your graph!
+
+(UI image here)
 
 ### Todo
 
